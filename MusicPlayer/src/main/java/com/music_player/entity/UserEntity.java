@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="MP_CUSTOMER")
+@Table(name="MP_USER")
 public class UserEntity {
 
 	@Id
@@ -27,9 +27,7 @@ public class UserEntity {
 	@Column(name="PHONE_NUMBER")
 	private String phoneNumber;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="ADMIN_EMAIL_ID")
-	private List<TrackEntity> likedTrackEntities;
+	
 	
 	public String getEmailId() {
 		return emailId;
@@ -63,11 +61,5 @@ public class UserEntity {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public List<TrackEntity> getLikedTrackEntities() {
-		return likedTrackEntities;
-	}
-
-	public void setLikedTrackEntities(List<TrackEntity> likedTrackEntities) {
-		this.likedTrackEntities = likedTrackEntities;
-	}
+	
 }

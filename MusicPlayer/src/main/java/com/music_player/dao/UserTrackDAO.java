@@ -7,5 +7,5 @@ import com.music_player.model.Track;
 public interface UserTrackDAO {
 
 	public List<Track> getAllTracks();
-	public List<Track> getLikedTracks();
+	
 }

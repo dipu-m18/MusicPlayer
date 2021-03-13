@@ -27,7 +27,6 @@ public class AdminTrackDAOImpl implements AdminTrackDAO{
 		newTrack.setTrackUrl(track.getTrackUrl());
 		newTrack.setName(track.getName());
 		newTrack.setAdminEmailId(track.getAdminEmailId());
-		newTrack.setArtists(track.getArtists());
 		newTrack.setGenre(track.getGenre());
 		newTrack.setImageUrl(track.getImageUrl());
 		newTrack.setPerformedBy(track.getPerformedBy());
@@ -50,7 +49,6 @@ public class AdminTrackDAOImpl implements AdminTrackDAO{
 		query.setParameter("trackId", track.getTrackId());
 		TrackEntity trackEntity = (TrackEntity) query.getResultList().get(0);
 		trackEntity.setAdminEmailId(track.getAdminEmailId());
-		trackEntity.setArtists(track.getArtists());
 		trackEntity.setGenre(track.getGenre());
 		trackEntity.setImageUrl(track.getImageUrl());
 		trackEntity.setName(track.getName());
@@ -90,7 +88,6 @@ public class AdminTrackDAOImpl implements AdminTrackDAO{
 			track.setTrackUrl(trackEntity.getTrackUrl());
 			track.setName(trackEntity.getName());
 			track.setAdminEmailId(trackEntity.getAdminEmailId());
-			track.setArtists(trackEntity.getArtists());
 			track.setGenre(trackEntity.getGenre());
 			track.setImageUrl(trackEntity.getImageUrl());
 			track.setPerformedBy(trackEntity.getPerformedBy());

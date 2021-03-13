@@ -10,9 +10,6 @@ public class User {
 	private String newPassword;
 	private String phoneNumber;
 	
-
-	private List<Track> likedTracks;
-	
 	private String errorMessage;
 	
 	
@@ -56,13 +53,7 @@ public class User {
 		this.newPassword = newPassword;
 	}
 
-	public List<Track> getLikedTracks() {
-		return likedTracks;
-	}
-
-	public void setLikedTracks(List<Track> likedTracks) {
-		this.likedTracks = likedTracks;
-	}
+	
 
 	public String getErrorMessage() {
 		return errorMessage;

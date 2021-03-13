@@ -27,10 +27,7 @@ public class TrackEntity {
 		
 		@Column(name="IMAGE_URL")
 		private String imageUrl;
-		
-		@Column(name="ARTISTS")
-		private String artists;
-		
+	
 		@Column(name="PERFORMED_BY")
 		private String performedBy;
 		
@@ -93,14 +90,6 @@ public class TrackEntity {
 
 		public void setImageUrl(String imageUrl) {
 			this.imageUrl = imageUrl;
-		}
-
-		public String getArtists() {
-			return artists;
-		}
-
-		public void setArtists(String artists) {
-			this.artists = artists;
 		}
 
 		public String getPerformedBy() {

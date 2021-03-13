@@ -46,7 +46,6 @@ public class AdminDAOImpl implements AdminDAO{
 			track.setName(trackEntity.getName());
 			track.setTrackUrl(trackEntity.getTrackUrl());
 			track.setImageUrl(trackEntity.getImageUrl());
-			track.setArtists(trackEntity.getArtists());
 			track.setGenre(trackEntity.getGenre());
 			track.setPerformedBy(trackEntity.getPerformedBy());
 			track.setProducedBy(trackEntity.getProducedBy());

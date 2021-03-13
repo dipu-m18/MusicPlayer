@@ -7,7 +7,6 @@ public class Track {
 	private String genre;
 	private String trackUrl;
 	private String imageUrl;
-	private String artists;
 	private String performedBy;
 	private String writtenBy;
 	private String producedBy;
@@ -64,12 +63,7 @@ public class Track {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-	public String getArtists() {
-		return artists;
-	}
-	public void setArtists(String artists) {
-		this.artists = artists;
-	}
+	
 	public String getPerformedBy() {
 		return performedBy;
 	}
