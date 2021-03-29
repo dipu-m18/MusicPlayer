@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.music_player.model.Track;
+
 @Entity
 @Table(name="MP_USER")
 public class UserEntity {
@@ -27,8 +29,19 @@ public class UserEntity {
 	@Column(name="PHONE_NUMBER")
 	private String phoneNumber;
 	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="USER_EMAIL_ID")
+	private List<LikedTrackEntity> likedTracks;
 	
-	
+
+	public List<LikedTrackEntity> getLikedTracks() {
+		return likedTracks;
+	}
+
+	public void setLikedTracks(List<LikedTrackEntity> likedTracks) {
+		this.likedTracks = likedTracks;
+	}
+
 	public String getEmailId() {
 		return emailId;
 	}

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.music_player.dao.UserTrackDAO;
+import com.music_player.model.LikedTrack;
 import com.music_player.model.Track;
 
 @Service(value = "userTrackService")
@@ -23,11 +24,20 @@ public class UserTrackServiceImpl implements UserTrackService {
 		return tracks;
 	}
 	
-//	@Override
-//	public List<Track> getLikedTracks(){
-//		List<Track> likedTracks = null;
-//		likedTracks = userTrackDAO.getLikedTracks();
-//		return likedTracks;
-//	}
+	@Override
+	public List<LikedTrack> getLikedTracks(String userEmailId){
+		List<LikedTrack> likedTracks = null;
+		likedTracks = userTrackDAO.getLikedTracks(userEmailId);
+		return likedTracks;
+	}
+	
+	@Override
+	public Integer addLikedTrack(LikedTrack likedTrack) throws Exception {
+		try{Integer likedTrackId = userTrackDAO.addLikedTrack(likedTrack);
+		return likedTrackId;
+		}catch(Exception e){
+			throw new Exception(e);
+		}
+	}
 
 }

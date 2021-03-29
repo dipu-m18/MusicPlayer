@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.music_player.entity.AdminEntity;
+import com.music_player.entity.LikedTrackEntity;
 import com.music_player.entity.TrackEntity;
 import com.music_player.entity.UserEntity;
+import com.music_player.model.LikedTrack;
 import com.music_player.model.Track;
 import com.music_player.model.User;
 
@@ -53,6 +55,7 @@ public class UserDAOImpl implements UserDAO{
 		userEntity.setName(user.getName());
 		userEntity.setPassword(user.getPassword());
 		userEntity.setPhoneNumber(user.getPhoneNumber());
+		userEntity.setLikedTracks(null);
 		
 		entityManager.persist(userEntity);
 		
@@ -93,11 +96,28 @@ public class UserDAOImpl implements UserDAO{
 		UserEntity userEntity = entityManager.find(UserEntity.class, emailId);
 		if(userEntity!=null) {
 			user = new User();
+			
 			user.setEmailId(userEntity.getEmailId());
 			user.setName(userEntity.getName());
 			user.setPassword(userEntity.getPassword());
 			user.setPhoneNumber(userEntity.getPhoneNumber());
-			
+			List<LikedTrack> likedTrackList =new ArrayList<LikedTrack>();
+			for(LikedTrackEntity likedTrackEntity:userEntity.getLikedTracks()) {
+				Track track = new Track();
+				LikedTrack likedTrack = new LikedTrack();
+				track.setTrackId(likedTrackEntity.getTrackEntity().getTrackId());
+				track.setName(likedTrackEntity.getTrackEntity().getName());
+				track.setTrackUrl(likedTrackEntity.getTrackEntity().getTrackUrl());
+				track.setImageUrl(likedTrackEntity.getTrackEntity().getImageUrl());
+				track.setGenre(likedTrackEntity.getTrackEntity().getGenre());
+				track.setPerformedBy(likedTrackEntity.getTrackEntity().getPerformedBy());
+				track.setProducedBy(likedTrackEntity.getTrackEntity().getProducedBy());
+				track.setWrittenBy(likedTrackEntity.getTrackEntity().getWrittenBy());
+				track.setSource(likedTrackEntity.getTrackEntity().getSource());
+				likedTrack.setTrack(track);
+				likedTrackList.add(likedTrack);
+			}
+			user.setLikedTracks(likedTrackList);
 		}
 		return user;
 	}
@@ -111,7 +131,7 @@ public class UserDAOImpl implements UserDAO{
 		Query query = entityManager.createQuery("select u from UserEntity u where u.phoneNumber = :phoneNumber");
 		query.setParameter("phoneNumber", phoneNumber);
 		List<UserEntity> userEntities =query.getResultList();
-		
+		List<LikedTrack> likedTrackList =new ArrayList<LikedTrack>();
 		if(!userEntities.isEmpty()) {
 			 userEntity = userEntities.get(0);
 			 if(userEntity!=null) {
@@ -120,7 +140,22 @@ public class UserDAOImpl implements UserDAO{
 					user.setName(userEntity.getName());
 					user.setPassword(userEntity.getPassword());
 					user.setPhoneNumber(userEntity.getPhoneNumber());
-					
+					for(LikedTrackEntity likedTrackEntity:userEntity.getLikedTracks()) {
+						Track track = new Track();
+						LikedTrack likedTrack = new LikedTrack();
+						track.setTrackId(likedTrackEntity.getTrackEntity().getTrackId());
+						track.setName(likedTrackEntity.getTrackEntity().getName());
+						track.setTrackUrl(likedTrackEntity.getTrackEntity().getTrackUrl());
+						track.setImageUrl(likedTrackEntity.getTrackEntity().getImageUrl());
+						track.setGenre(likedTrackEntity.getTrackEntity().getGenre());
+						track.setPerformedBy(likedTrackEntity.getTrackEntity().getPerformedBy());
+						track.setProducedBy(likedTrackEntity.getTrackEntity().getProducedBy());
+						track.setWrittenBy(likedTrackEntity.getTrackEntity().getWrittenBy());
+						track.setSource(likedTrackEntity.getTrackEntity().getSource());
+						likedTrack.setTrack(track);
+						likedTrackList.add(likedTrack);
+					}
+					user.setLikedTracks(likedTrackList);
 				}
 		}
 		return user;

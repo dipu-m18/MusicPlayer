@@ -84,7 +84,6 @@ public class AdminDAOImpl implements AdminDAO{
 		adminEntity.setTrackEntities(null);
 		
 		entityManager.persist(adminEntity);
-		System.out.println("admin added");
 		registeredWithEmailId = adminEntity.getEmailId();
 		
 		return registeredWithEmailId;
